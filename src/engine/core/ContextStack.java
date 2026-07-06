@@ -1,7 +1,7 @@
 package engine.core;
 
 public class ContextStack {
-    private static class Stack{
+    public static class Stack{
         private class Node{
             private String context;
             private Node next;
@@ -13,12 +13,12 @@ public class ContextStack {
         private Node head;
         private int size;
 
-        private Stack(){
+        public Stack(){
             this.head = null;
             this.size = 0;
         }
 
-        private void push(String data){
+        public void push(String data){
             Node node = new Node(data);
             if(head == null){
                 head = node;
@@ -30,7 +30,7 @@ public class ContextStack {
             System.out.println("Pushed the data at TOP: " + data);
         }
 
-        private String pop(){
+        public String pop(){
             if(size == 0){
                 System.out.println("Empty Stack!");
                 return "null";
@@ -38,10 +38,11 @@ public class ContextStack {
             String poppedContext = head.context;
             head = head.next;
             size--;
+            System.out.println("Popping - " + poppedContext);
             return poppedContext;
         }
 
-        private String peek(){
+        public String peek(){
             if(size == 0){
                 System.out.println("Empty Stack!");
                 return "null";
@@ -49,7 +50,7 @@ public class ContextStack {
             return head.context;
         }
 
-        private void display(){
+        public void display(){
             Node ptr = head;
             if(ptr == null){
                 System.out.println("Empty Stack");
@@ -60,7 +61,7 @@ public class ContextStack {
                 System.out.print(ptr.context + " -> ");
                 ptr = ptr.next;
             }
-            System.out.print("Bottom");
+            System.out.println("Bottom");
         }
     }
     public static void main(String args[]){

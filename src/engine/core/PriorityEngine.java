@@ -1,7 +1,7 @@
 package engine.core;
 
 public class PriorityEngine {
-    private static class CustomHeap{
+    public static class CustomHeap{
         private class EngineTask{
             private String task;
             private int weight;
@@ -29,7 +29,7 @@ public class PriorityEngine {
             slots[index2] = temp; 
         }
 
-        private void schedule(String task, int weight){
+        public void schedule(String task, int weight){
             System.out.println("Scheduling : " + task);
             if(size == capacity){
                 System.out.println("Error - Full");
@@ -49,7 +49,7 @@ public class PriorityEngine {
             }
         }
 
-        private String dispatch(){
+        public String dispatch(){
             if(size == 0){
                 System.out.println("Empty!");
                 return "Empty!";
@@ -75,7 +75,7 @@ public class PriorityEngine {
             System.out.println("Executing - " + highestPriorityTask);
             return highestPriorityTask;
         }
-        private void display(){
+        public void display(){
             for(int i = 0; i< size; i++){
                 System.out.print(slots[i].task + " - ");
             }
