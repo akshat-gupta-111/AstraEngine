@@ -90,30 +90,31 @@ public class SystemTokenizer {
         }
     }
     
-    public static void tokenizer(String s){
+    public static int tokenizer(String s){
         char[] arr = s.toCharArray();
-        DynamicCommandBuffer[] buffer = new DynamicCommandBuffer[10];
+        DynamicCommandBuffer[] buffer = new DynamicCommandBuffer[200]; 
         int tokenCount = 0;
         int windowStart = 0;
 
         for(int windowEnd = 0; windowEnd <= arr.length; windowEnd++){
-            if (windowEnd == arr.length || arr[windowEnd] == '|'){
-                int capNeeded = windowEnd - windowStart;
-                DynamicCommandBuffer curr = new DynamicCommandBuffer(capNeeded);
-                for(int i = windowStart; i< windowEnd; i++){
-                    curr.add(arr[i]);
+           
+            if (windowEnd == arr.length || arr[windowEnd] == ' ' || arr[windowEnd] == '\n'){
+                
+              
+                if (windowEnd > windowStart) { 
+                    int capNeeded = windowEnd - windowStart;
+                    DynamicCommandBuffer curr = new DynamicCommandBuffer(capNeeded);
+                    for(int i = windowStart; i< windowEnd; i++){
+                        curr.add(arr[i]);
+                    }
+                    buffer[tokenCount] = curr;
+                    tokenCount++;
                 }
-                buffer[tokenCount] = curr;
-                tokenCount++;
                 windowStart = windowEnd + 1;
             }
         }
-        System.out.println("\n--- ENGINE PARSE COMPLETE ---");
-        for (int i = 0; i < tokenCount; i++) {
-            buffer[i].display();
-        }
-    }
-
+        return tokenCount;
+    }    
     public static void main(String[] args){
         // DynamicCommandBuffer arr = new DynamicCommandBuffer(2);
         // arr.add('1');
