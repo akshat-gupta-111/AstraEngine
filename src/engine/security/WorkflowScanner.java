@@ -3,11 +3,11 @@ import java.util.List;
 
 import engine.exceptions.CyclicDeadlockException;
 import engine.interfaces.IWorkflowScanner;
-import engine.models.EngineTask;
+
 
 public class WorkflowScanner implements IWorkflowScanner {
-    @Override
-    public boolean cycleDetection(List<List<EngineTask>> list, int size){
+    
+    public boolean cycleDetection(List<List<Integer>> list, int size){
         boolean[] visited = new boolean[size];
         boolean[] inActivePath = new boolean[size];
         for(int i = 0 ; i< size; i++ ){
@@ -18,15 +18,15 @@ public class WorkflowScanner implements IWorkflowScanner {
         return false;
     }
 
-    private boolean dfsCycleHunt(int current , boolean[] visited, boolean[] inActivePath,List<List<EngineTask>> list){
+    private boolean dfsCycleHunt(int current , boolean[] visited, boolean[] inActivePath,List<List<Integer>> list){
         if(inActivePath[current]) return true;
         if(visited[current]) return false;
 
         inActivePath[current] = true;
         visited[current] = true;
 
-        for(EngineTask  neighbours : list.get(current)){
-            if(dfsCycleHunt(neighbours.task, visited, inActivePath, list)){
+        for(int  neighbour : list.get(current)){
+            if(dfsCycleHunt(neighbour, visited, inActivePath, list)){
                 return true;
             }
         }
