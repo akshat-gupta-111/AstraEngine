@@ -46,7 +46,7 @@ public class EngineMemoryCache implements ICache{
         node.prev = head;
     }
 
-    public void put(String key, String value){
+    public synchronized void put(String key, String value){
         Node node = new Node(key, value);
         if(map.containsKey(key)) removeNode(map.get(key));
         insertToFront(node);
@@ -58,7 +58,7 @@ public class EngineMemoryCache implements ICache{
             map.remove(lru.key);
         }
     }
-    public String get(String key){
+    public synchronized String get(String key){
         if(!map.containsKey(key)) return "DOES_NOT_EXISTS";
         Node node = map.get(key);
         removeNode(node);
