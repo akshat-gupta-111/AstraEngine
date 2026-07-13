@@ -52,8 +52,9 @@ public class Phase4_EncapsulatedGraph {
         }
 
 
-        // BFS 
-        public void parallelExecution(int startTask){
+        // BFS - Khan's Algo
+
+        public void parallelExecution(){
             Queue<Integer> queue = new LinkedList<>();
             int[] indegree = new int[totalTask];
             int currentLevel = 0; //no use just to print
@@ -129,7 +130,7 @@ public class Phase4_EncapsulatedGraph {
         // Let the engine calculate the only safe execution order
         engineGraph.generateExecutionPlan();
         System.out.println("BFS -------------");
-        engineGraph.parallelExecution(5);
+        engineGraph.parallelExecution();
         // Expected Output: 5 -> 4 -> 2 -> 3 -> 1 -> 0 (or similar valid topological
         // order)
     }
