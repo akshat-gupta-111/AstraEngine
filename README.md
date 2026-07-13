@@ -1,13 +1,14 @@
-🚀 AstraEngine
+# 🚀 AstraEngine
 
-A High-Performance, Multithreaded DAG Orchestration Engine built in pure Java.
+> **A High-Performance, Multithreaded DAG Orchestration Engine built in pure Java.**
 
-AstraEngine is a custom-built distributed computing engine designed to execute complex, dependent AI workflows. Built entirely from scratch without reliance on standard library abstractions, it features Kahn's Algorithm for topological sorting, a custom barrier-synchronized Work-Stealing thread pool, and dynamic LRU memory caching.
+AstraEngine is a custom-built distributed computing engine designed to execute complex, dependent AI workflows. Built entirely from scratch without reliance on standard library abstractions, it features **Kahn's Algorithm** for topological sorting, a **custom barrier-synchronized Work-Stealing thread pool**, and **dynamic LRU memory caching**.
 
-📂 Project Structure
+---
 
-The repository is strictly divided into two primary domains: the Algorithmic Laboratory and the Production Engine.
+## 📂 Project Structure
 
+```text
 src/
 ├── dsa/                       # The Laboratory: Algorithmic evolutions and data structures
 │   ├── lists/                 # Brute-force to O(1) Doubly Linked Lists & Cycle Detection
@@ -18,13 +19,17 @@ src/
 └── engine/                    # The Production Core
     ├── cache/                 # EngineMemoryCache (LRU Cache implementation)
     ├── core/                  # AstraEngine Orchestrator, WorkStealingDispatcher, KahnsExecutor
-    ├── interfaces/            # Decoupled interface contracts (ITaskDispatcher, ICache, etc.)
+    ├── interfaces/            # Decoupled interface contracts
     ├── models/                # EngineTask and DAG memory models
-    ├── network/               # GeminiLLMClient and RetryManager (Exponential Backoff)
-    └── tokenizer/             # SystemTokenizer (Sliding window pre-execution safety valve)
+    ├── network/               # GeminiLLMClient and RetryManager
+    └── tokenizer/             # SystemTokenizer
+```
+
+---
+
+## 🧠 The DSA Evolution
 
 
-🧠 The DSA Evolution (The dsa/ Laboratory)
 
 This engine was not built using out-of-the-box frameworks. Every component was engineered from the ground up, evolving from brute-force memory allocation to enterprise-grade, thread-safe structures.
 
